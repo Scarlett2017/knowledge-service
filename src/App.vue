@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <home></home>
-    <router-view/>
   </div>
 </template>
 
@@ -9,7 +8,9 @@
 import Home from './components/home/home'
 
 export default {
-  components:Home
+  components:{
+    Home
+  }
 }
 </script>
 
