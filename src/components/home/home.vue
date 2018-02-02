@@ -4,9 +4,9 @@
       text-color="#fff" active-text-color="#ffd04b">
       <el-submenu index="1">
         <template slot="title">项目管理</template>
-        <el-menu-item index="2-1">项目</el-menu-item>
-        <el-menu-item index="2-2">消息</el-menu-item>
-        <el-menu-item index="2-3">团队</el-menu-item>
+        <el-menu-item index="1-1">项目</el-menu-item>
+        <el-menu-item index="1-2">消息</el-menu-item>
+        <el-menu-item index="1-3">团队</el-menu-item>
       </el-submenu>
       <el-submenu index="2">
         <template slot="title">帐号管理</template>
@@ -18,8 +18,7 @@
       </el-menu-item>
     </el-menu>
 <el-row>
-  <el-col :span="6">
-    <h5>自定义颜色</h5>
+  <el-col :span="4">
     <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
@@ -54,7 +53,7 @@
       </el-menu-item>
     </el-menu>
   </el-col>
-  <el-col :span="18"></el-col>
+  <el-col :span="20"></el-col>
 </el-row>
 </div>
 </template>
