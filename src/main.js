@@ -43,6 +43,8 @@ Vue.use(Button)
 Vue.use(Col)
 Vue.use(Row)
 
+import './common/stylus/index.styl'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
