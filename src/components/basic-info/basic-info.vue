@@ -24,13 +24,20 @@
             <el-input v-model="ruleForm.company"></el-input>
           </el-form-item>
           <el-form-item label="联系电话" prop="phone" size="small" required>
-            <el-input v-model="ruleForm.phone"></el-input>
+            <el-input v-model="ruleForm.phone" class="phone"></el-input>
+          </el-form-item>
+          <el-form-item label="验证码" prop="captcha" size="small" required>
+            <el-input v-model="ruleForm.captcha" class="captcha" style="width:200px"></el-input>
+            <el-button class="button-1" v-if="sendAuthCode" @click="getAuthCode">获取验证码</el-button>
+             <div class="button-2" v-if="!sendAuthCode">
+                 <div class="auth_text">{{auth_time}} </div> 秒后重新发送验证短信
+            </div>
           </el-form-item>
           <el-form-item label="联系邮箱" prop="email" size="small" required>
             <el-input v-model="ruleForm.email"></el-input>
           </el-form-item>
         </el-form>
-        <el-button size="small" type="primary">保存</el-button>
+        <el-button class="save" size="small" type="primary">保存</el-button>
       </div>
     </div>
   </div>
@@ -45,9 +52,12 @@
           name: '',
           company: '',
           phone: '',
-          email: ''
+          email: '',
+          captcha:''
         },
-        imageUrl: ''
+        imageUrl: '',
+        sendAuthCode:true,
+        auth_time:0
       }
     },
      methods: {
@@ -65,7 +75,21 @@
           this.$message.error('上传头像图片大小不能超过 2MB!');
         }
         return isJPG && isLt2M;
-      }
+      },
+      toggleShow(){
+        this.captchaShow = true
+      },
+        getAuthCode() {
+            this.sendAuthCode = false;
+            this.auth_time = 60;
+            var auth_timetimer =  setInterval(()=>{
+                this.auth_time--;
+                if(this.auth_time<=0){
+                    this.sendAuthCode = true;
+                    clearInterval(auth_timetimer);
+                }
+            }, 1000);
+        }
     }
   }
 
@@ -103,7 +127,16 @@
           width: 178px
           height: 178px
           display: block
-      .el-button
+      .save
         position absolute
-        left 250px
+        left 50%
+      .button-1
+        display inline-block  
+        font-size 10px
+      .button-2
+        display inline-block 
+        text-align center 
+        font-size 10px
+        .auth_text
+            display inline-block
 </style>

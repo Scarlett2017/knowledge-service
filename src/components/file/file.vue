@@ -35,8 +35,8 @@
             </template>
           </el-table-column>
         </el-table>
-        <el-button size="small" type="primary" class="upload">
-          <i class="el-icon-upload2"></i>上传文件</el-button>
+        <el-button size="small" type="primary" class="upload"><i class="el-icon-upload2"></i>上传文件</el-button>
+        <a class="tip">普通用户100M存储空间，升级会员存储空间升级为2G！</a>
       </el-main>
     </el-container>
   </div>
@@ -140,4 +140,11 @@ export default {
                 color #F56C6C
         .upload
             margin-top 20px
+        a
+          display block 
+          margin-top 10px
+          font-size 12px
+          &:hover
+            text-decoration underline
+            color #409EFF
 </style>

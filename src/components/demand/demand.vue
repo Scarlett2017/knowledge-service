@@ -16,15 +16,8 @@
         <el-form-item label="需求名称">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
-            <el-form-item label="类型">
-            <el-select size="small" style="width: 190px" v-model="selectProv" placeholder="请选择领域" v-on:change="getProv($event)">
-              <el-option v-for="item in provs" :label="item.label" :value="item.value">
-              </el-option>
-            </el-select>
-            <el-select size="small" style="width: 190px" v-if="selectProv!=''" v-model="selectCity" placeholder="请选择专业">
-              <el-option v-for="item in citys" :label="item.label" :value="item.value">
-              </el-option>
-            </el-select>
+            <el-form-item label="项目类型">
+           <prov-city></prov-city>
           </el-form-item>
         <el-form-item label="项目时间">
           <el-col :span="11">
@@ -35,6 +28,14 @@
             <el-date-picker type="date" placeholder="选择结束日期" v-model="form.date2" style="width: 100%;"></el-date-picker>
           </el-col>
         </el-form-item>
+        <el-form-item v-for="(demand, index) in form.demands" :key="demand.key" :prop="'demands.' + index + '.value'" :label="'需求人才'+(index+1)">
+          <prov-city></prov-city>
+          <el-input v-model="demand.num" placeholder="请输入需求人数" style="width: 150px"></el-input>
+          <el-button @click.prevent="removeDemand(demand)">删除</el-button>
+        </el-form-item>
+         <el-form-item>
+            <el-button @click="addDemand" size="small" type="primary" plain>添加需求人才类型</el-button>
+         </el-form-item>
         <el-form-item label="需求描述">
           <el-input type="textarea" v-model="form.desc"></el-input>
           <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/"
@@ -54,6 +55,8 @@
 
 
 <script>
+import ProvCity from '../../base/prov-city/prov-city'
+
   export default {
     data() {
       return {
@@ -62,7 +65,11 @@
           date1: '',
           date2: '',
           desc: '',
-          price:''
+          price:'',
+          demands: [{
+            value: '',
+            num:''
+          }],
         },
          provs: [{
             label: "金融",
@@ -77,9 +84,13 @@
             value: "教育学"
           }
         ],
+        addIndex:0,
         citys: [],
         selectProv: '',
         selectCity: '',
+        citys_1: [],
+        selectProv_1: '',
+        selectCity_1: '',
         fileList: [{name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
       }
     },
@@ -123,8 +134,59 @@
           }
         }
         this.citys = tempCity;
-      }
-    }
+      },
+       getProv_1(prov) {
+        let tempCity = [];
+        this.citys_1 = [];
+        this.selectCity_1 = '';
+        let allCity = [{
+          prov: "金融",
+          label: "投资学"
+        }, {
+          prov: "金融",
+          label: "货币学"
+        }, {
+          prov: "电子信息",
+          label: "通信"
+        }, {
+          prov: "电子信息",
+          label: "硬件"
+        }, {
+          prov: "教育学",
+          label: "学前教育"
+        }, {
+          prov: "教育学",
+          label: "大学教育"
+        }]
+        for (var val of allCity) {
+          if (prov == val.prov) {
+            tempCity.push({
+              label: val.label,
+              value: val.label
+            })
+          }
+        }
+        this.citys_1 = tempCity;
+      },
+      addDemand() {
+        this.addIndex++
+        if(this.addIndex<4){
+          this.form.demands.push({
+          value: '',
+          key: Date.now()
+      });
+        }
+    },
+     removeDemand(item) {
+        var index = this.form.demands.indexOf(item)
+        if (index !== -1) {
+          this.form.demands.splice(index, 1)
+        }
+      },
+  },
+  components:{
+    ProvCity
+  }
   }
 
 </script>

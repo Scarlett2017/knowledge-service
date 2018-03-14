@@ -28,6 +28,11 @@
               </div>
           </template>
         </el-table-column>
+         <el-table-column label="操作">
+          <template slot-scope="scope">
+             <el-button @click="examineDetail" type="text">去审核</el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </div>
     <div class="recommend">
@@ -125,6 +130,11 @@
             path: '/message/contract'
           })
         }
+      },
+      examineDetail(){
+          this.$router.push({
+            path: '/message/examinedetail'
+          })
       }
     }
   }

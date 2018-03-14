@@ -6,7 +6,7 @@
     </el-breadcrumb>
     <el-row>
       <el-col :span="4">
-        <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+        <el-menu default-active="1" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
           <router-link to="/message/report">
             <el-menu-item index="1">
               <i class="el-icon-tickets"></i>
@@ -25,8 +25,14 @@
               <span slot="title">合作请求</span>
             </el-menu-item>
           </router-link>
-          <router-link to="/message/notice">
+           <router-link to="/message/examine">
             <el-menu-item index="4">
+              <i class="el-icon-zoom-in"></i>
+              <span slot="title">审核请求</span>
+            </el-menu-item>
+          </router-link>
+          <router-link to="/message/notice">
+            <el-menu-item index="5">
               <i class="el-icon-bell"></i>
               <span slot="title">系统通知</span>
             </el-menu-item>

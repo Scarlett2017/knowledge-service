@@ -34,10 +34,10 @@
     },
     methods: {
       typeChange(type) {
-        return type === '加入项目' ? 'primary' : 'danger'
+        return type === '发送邀请' ? 'primary' : 'danger'
       },
       confirm(item) {
-        if (item.type === '加入项目') {
+        if (item.type === '发送邀请') {
           this.$message({
               message:'已发送请求！请等待对方确认',
               type:'success'

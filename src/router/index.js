@@ -25,6 +25,10 @@ import Feedback from '../components/feedback/feedback.vue'
 import FeedbackDetail from '../components/feedback-detail/feedback-detail.vue'
 import Cooperation from '../components/cooperation/cooperation.vue'
 import Notice from '../components/notice/notice.vue'
+import SignContract from '../components/sign_contract/sign_contract.vue'
+import Contract from '../components/contract/contract.vue'
+import Examine from '../components/examine/examine.vue'
+import ExamineDetail from '../components/examine-detail/examine-detail.vue' 
 
 Vue.use(Router)
 
@@ -88,6 +92,10 @@ export default new Router({
         {
           path: '/collect',
           component: Collect
+        },
+        {
+          path:'/contract',
+          component:Contract
         }
       ]
     },
@@ -112,6 +120,18 @@ export default new Router({
         {
           path: '/message/notice',
           component: Notice
+        },
+        {
+          path:'/message/contract',
+          component:SignContract
+        },
+        {
+          path:'/message/examine',
+          component:Examine
+        },
+        {
+          path:'/message/examinedetail',
+          component:ExamineDetail
         }
       ]
     },

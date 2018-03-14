@@ -7,7 +7,7 @@
     </el-breadcrumb>
     <el-row>
       <el-col :span="4">
-        <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+        <el-menu default-active="1" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
           <router-link to="/dynamic">
             <el-menu-item index="1">
               <i class="el-icon-news"></i>
@@ -42,6 +42,12 @@
             <el-menu-item index="6">
               <i class="el-icon-star-off"></i>
               <span slot="title">收藏</span>
+            </el-menu-item>
+          </router-link>
+           <router-link to="/contract">
+            <el-menu-item index="7">
+              <i class="el-icon-tickets"></i>
+              <span slot="title">合约</span>
             </el-menu-item>
           </router-link>
         </el-menu>

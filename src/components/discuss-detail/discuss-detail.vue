@@ -106,11 +106,13 @@ export default {
         ],
         essay:[
             {
-                name:'www.baidu.com',
+                name:'关于心理学在深度学习的研究',
+                address:'www.baidu.com',
                 collected:false
             },
             {
-                name:'www.123.com',
+                name:'关于深度学习的研究',
+                address:'www.123.com',
                 collected:false
             }
         ],
